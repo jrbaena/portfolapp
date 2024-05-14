@@ -1,14 +1,13 @@
-class Stock {
-  final String ticker;
-  final String name;
-  final double currentValue;
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/foundation.dart';
 
-  Stock({required this.ticker, required this.name, required this.currentValue});
+part 'stock.freezed.dart';
 
-  factory Stock.fromJson(Map<String, dynamic> json) {
-    return Stock(
-        ticker: json['ticker'],
-        name: json['name'],
-        currentValue: json['value']);
-  }
+part 'stock.g.dart';
+
+@freezed
+class Stock with _$Stock{
+  const factory Stock({required String ticker, required String name, required double currentValue}) = _Stock;
+
+  factory Stock.fromJson(Map<String, Object?> json) => _$StockFromJson(json);
 }
